@@ -2,5 +2,4 @@
 name = "modhello"
 version = "0.1.0"
 authors = ["webing <wenweiping920@163.com>"]
-edition = "2018"
 [dependencies]
