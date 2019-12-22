@@ -1,4 +1,8 @@
 
+/***
+ * 
+ * 只要是支持中文字符发送
+ */
 use std::net::{TcpListener,TcpStream};
 use std::io::{Read,Write};
 use std::thread;
@@ -7,9 +11,10 @@ use std::sync::Mutex;
 use std::io::ErrorKind;
 
 
-// extern crate encoding;
-// use encoding::all::GB18030;
-// use encoding::{DecoderTrap, EncoderTrap, Encoding};
+extern crate encoding;
+use encoding::all::GB18030;
+use encoding::{DecoderTrap, EncoderTrap, Encoding};
+
 
 fn createListener(ip:&str,port :i32)->TcpListener
 {
@@ -20,13 +25,13 @@ fn createListener(ip:&str,port :i32)->TcpListener
 }
 //传入前复制
 fn writeRoutine(conn:Arc<Mutex<TcpStream>>){
-    // let msg = "曾永红发红包了...[100元]大吉大利！！！".ToString();
+    let msg = String::from("曾永红发红包了...[100元]大吉大利！！！");
     let arc_conn = conn.clone();
     let writeHandler = thread::spawn( move|| {
      let mut cc=    arc_conn.lock().unwrap();
         loop{
             thread::sleep_ms(1000);
-            match cc.write(b"Mrs.Zeng send redPack [888] gongxifacai")
+            match cc.write(&GB18030.encode(&msg, EncoderTrap::Strict).unwrap())
             {
                 Ok(s)=>{
 

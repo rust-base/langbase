@@ -3,6 +3,14 @@ name = "app"
 version = "0.1.0"
 authors = ["webing <wenweiping920@163.com>"]
 
+
+[source.crates-io]
+        replace-with = 'ustc'
+
+[source.ustc]
+        registry = "git://mirrors.ustc.edu.cn/crates.io-index"
+
+        
 [dependencies]
 
- encoding ="*"
+encoding="*"
