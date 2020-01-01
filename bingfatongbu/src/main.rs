@@ -22,7 +22,7 @@ fn main() {
    }
 
    for h in handles{
-       h.join();
+       h.join().unwrap();
    }
    println!("value:{}", s2.lock().unwrap()[0] );
 }
