@@ -28,6 +28,11 @@ impl<T> BaseCmd<T> for Delete {
         }
         
     }
+
+    fn new(o:Opt)->Target
+    {
+        return T(o);
+    }
 }
 
 
