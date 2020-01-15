@@ -61,6 +61,8 @@ fn main() {
 
 
     let arrRef :&[i32] = &[1,2,3];
+ 
+
 
     let vvec:Vec<i32> = arrRef.to_vec();
 
@@ -70,7 +72,11 @@ fn main() {
 
 
  
-
+    let name = "wenweiping";
+    let nameString = String::from("dengxiuzhen");
+    
+    println!("output:{}",&name[3..]);
+    println!("nameString:{}",&nameString[3..]);
 
     
 }
